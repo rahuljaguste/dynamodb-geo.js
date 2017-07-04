@@ -104,7 +104,7 @@ export class DynamoDBManager {
     return this.config.dynamoDBClient.getItem(getItemInput);
   }
 
-  public putPoint(putPointInput: PutPointInput): Request<PutPointOutput, AWSError> {
+  public putPoint(putPointInput: PutPointInput,callback): Request<PutPointOutput, AWSError> {
     const geohash = S2Manager.generateGeohash(putPointInput.GeoPoint);
     const hashKey = S2Manager.generateHashKey(geohash, this.config.hashKeyLength);
     const putItemInput = putPointInput.PutItemInput;
@@ -128,7 +128,7 @@ export class DynamoDBManager {
     };
 
 
-    return this.config.dynamoDBClient.putItem(putItemInput);
+    return this.config.dynamoDBClient.putItem(putItemInput,callback);
   }
 
 

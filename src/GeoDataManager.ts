@@ -107,8 +107,8 @@ export class GeoDataManager {
    *
    * @return Result of put point request.
    */
-  public putPoint(putPointInput: PutPointInput): Request<PutPointOutput, AWSError> {
-    return this.dynamoDBManager.putPoint(putPointInput);
+  public putPoint(putPointInput: PutPointInput,callback): Request<PutPointOutput, AWSError> {
+    return this.dynamoDBManager.putPoint(putPointInput,callback);
   }
 
   /**
